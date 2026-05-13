@@ -474,7 +474,13 @@ spec:
         branch: main
         commitMessage: "chore: inject ${{ parameters.language }} CI/CD template (port: ${{ parameters.app_port }})"
         sourcePath: ./
-
+        
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: https://github.com/jk7testorg/${{ parameters.repo | trim }}/blob/main
+        catalogInfoPath: "/catalog-info.yaml"
   output:
     links:
       - title: View Repository
