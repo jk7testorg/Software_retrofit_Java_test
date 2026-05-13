@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/BackstageSSPPoC/k8s-manifests.git
+    repoURL: https://github.com/jk7testorg/k8s-manifests.git
     targetRevision: main
     path: apps/${APP_NAME}
   destination:
