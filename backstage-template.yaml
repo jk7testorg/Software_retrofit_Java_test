@@ -470,7 +470,7 @@ spec:
       name: Inject CI/CD Directly
       action: github:push
       input:
-        repoUrl: github.com?owner=BackstageSSPPoC&repo=${{ parameters.repo }}
+        repoUrl: github.com?owner=jk7testorg&repo=${{ parameters.repo }}
         branch: main
         commitMessage: "chore: inject ${{ parameters.language }} CI/CD template (port: ${{ parameters.app_port }})"
         sourcePath: ./
@@ -478,4 +478,4 @@ spec:
   output:
     links:
       - title: View Repository
-        url: https://github.com/BackstageSSPPoC/${{ parameters.repo | trim }}/tree/main
+        url: https://github.com/jk7testorg/${{ parameters.repo | trim }}/tree/main
