@@ -7,10 +7,10 @@ pipeline {
 
     environment {
         APP_NAME = "${{values.app_name}}".toLowerCase().trim()
-        DOCKER_IMAGE = "chaitanyapandeygspann/${APP_NAME}"
+        DOCKER_IMAGE = "jaykumark7/${APP_NAME}"
         DOCKER_TAG = "1.0.${BUILD_NUMBER}"
         IMAGE_TAG = "${DOCKER_IMAGE}:${DOCKER_TAG}"
-        GITOPS_REPO = "https://github.com/BackstageSSPPoC/k8s-manifests.git"
+        GITOPS_REPO = "https://github.com/jk7testorg/k8s-manifests.git"
         APP_PORTS = "${{values.app_port}}"
     }
 
@@ -85,7 +85,7 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-credentials',
+                    credentialsId: 'jk7-dockerhub-credentials',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
@@ -108,11 +108,11 @@ pipeline {
                 expression { env.RUN_MODE == "cd" }
             }
             steps {
-                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'jk7-github-token', variable: 'GITHUB_TOKEN')]) {
                     sh '''
                     rm -rf k8s-manifests
 
-                    git clone --depth 1 https://${GITHUB_TOKEN}@github.com/BackstageSSPPoC/k8s-manifests.git
+                    git clone --depth 1 https://${GITHUB_TOKEN}@github.com/jk7testorg/k8s-manifests.git
                     cd k8s-manifests
 
                     mkdir -p apps/${APP_NAME}
